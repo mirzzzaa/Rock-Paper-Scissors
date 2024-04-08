@@ -7,66 +7,109 @@
 </head>
 <body>
     <script>
+       
         // The getCompChoice function integrates a random function into the code 
         function getCompChoice() 
         {                         
-            let compChoice = Math.floor(Math.random() * 3) + 1;
+            let compChoice = Math.floor(Math.random() * 3) + 1
             if (compChoice === 1) 
             {
-                return "Rock";
+                return "rock"
             } else if (compChoice === 2) 
             {
-                return "Paper";
+                return "paper"
             } else if (compChoice === 3) 
             {
-                return "Scissors";
+                return "scissors"
             }
         }
+
+        playGame()
+
 // playRound function initially takes players choice and outputs the selcted option
         function playRound(playerSelection, computerSelection) 
         {
-            console.log(`Player chose ${playerSelection}`);
-            console.log(`Computer chose ${computerSelection}`);
+            let playerScore = 0 , compScore = 0
+            console.log(`Player chose ${playerSelection}`)
+            console.log(`Computer chose ${computerSelection}`)
 // the logic behind selecting a choice and the computer testing it against its own random number given in the getCompchoice function
-            if (playerSelection === computerSelection) {
-                return "It's a tie!";
-            } 
-            else if (
-                (playerSelection === "Rock" && computerSelection === "Scissors") ||
-                (playerSelection === "Paper" && computerSelection === "Rock") ||
-                (playerSelection === "Scissors" && computerSelection === "Paper")
+           if (
+                (playerSelection === "rock" && computerSelection === "scissors") ||
+                (playerSelection === "paper" && computerSelection === "rock") ||
+                (playerSelection === "scissors" && computerSelection === "paper")
             ) 
             {
-                return "Player wins!";
+                playerScore 
+                return "Player wins!"
+               
+               
+               
+            } 
+            else if (playerSelection === computerSelection)
+            {
+                return "It's a tie "
+            }
+            else 
+            {
+                compScore 
+                return "Computer wins!"
+          
+           
+            }
+            
+        }
+
+     // add a function called playGame so that a 5 round game is played score is kept and winner is displayed at the end
+     function playGame() 
+     {
+    let compScore = 0;
+    let playerScore = 0;
+
+    for (let i = 1; i <= 5; i++) 
+    {
+        let playerSelection;
+
+        while (true) 
+        {
+            playerSelection = prompt("Rock, Paper, or Scissors: SHOOT!").toLowerCase();
+
+            if (playerSelection === "rock" || playerSelection === "paper" || playerSelection === "scissors") 
+            {
+                break; // Exit the loop if input is valid
             } 
             else 
             {
-                return "Computer wins!";
+                alert("Invalid input. Please enter 'rock', 'paper', or 'scissors'.");
             }
         }
-// .toLowerCase is a javascript property which makes the input case insensitive
-let playerSelection;
 
-while (true) 
-{
-    playerSelection = prompt("Rock, Paper, or Scissors: SHOOT!").toLowerCase();
-    
-    if (playerSelection === "rock" || playerSelection === "paper" || playerSelection === "scissors") 
-    {
-        break; // Exit the loop if input is valid
-    } 
-    else 
-    {
-        alert("Invalid input. Please enter 'rock', 'paper', or 'scissors'.");
-    }
-}
+        let computerSelection = getCompChoice();
 
-// Now continue with the rest of your code using playerSelection as valid input
-    let computerSelection = getCompChoice();
         console.log(playRound(playerSelection, computerSelection));
-        
-     
-      
+
+        if (playerSelection === "rock" && computerSelection === "scissors") 
+        {
+            playerScore++
+        } 
+        else if (playerSelection === "paper" && computerSelection === "rock") 
+        {
+            playerScore++
+        } 
+        else if (playerSelection === "scissors" && computerSelection === "paper") 
+        {
+            playerScore++
+        } else if (playerSelection !== computerSelection) 
+        {
+            compScore++;
+        }
+    }
+
+    console.log("Game Over");
+    console.log("Player's score:", playerScore);
+    console.log("Computer's score:", compScore);
+}
+    
+   
     </script>
 </body>
 </html>
