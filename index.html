@@ -8,37 +8,65 @@
 <body>
     <script>
         // The getCompChoice function integrates a random function into the code 
-        function getCompChoice() {                         
+        function getCompChoice() 
+        {                         
             let compChoice = Math.floor(Math.random() * 3) + 1;
-            if (compChoice === 1) {
+            if (compChoice === 1) 
+            {
                 return "Rock";
-            } else if (compChoice === 2) {
+            } else if (compChoice === 2) 
+            {
                 return "Paper";
-            } else if (compChoice === 3) {
+            } else if (compChoice === 3) 
+            {
                 return "Scissors";
             }
         }
 // playRound function initially takes players choice and outputs the selcted option
-        function playRound(playerSelection, computerSelection) {
+        function playRound(playerSelection, computerSelection) 
+        {
             console.log(`Player chose ${playerSelection}`);
             console.log(`Computer chose ${computerSelection}`);
 // the logic behind selecting a choice and the computer testing it against its own random number given in the getCompchoice function
             if (playerSelection === computerSelection) {
                 return "It's a tie!";
-            } else if (
+            } 
+            else if (
                 (playerSelection === "Rock" && computerSelection === "Scissors") ||
                 (playerSelection === "Paper" && computerSelection === "Rock") ||
                 (playerSelection === "Scissors" && computerSelection === "Paper")
-            ) {
+            ) 
+            {
                 return "Player wins!";
-            } else {
+            } 
+            else 
+            {
                 return "Computer wins!";
             }
         }
 // .toLowerCase is a javascript property which makes the input case insensitive
-        let playerSelection = prompt("Rock, Paper, or Scissors : SHOOT!").toLowerCase();
-        let computerSelection = getCompChoice();
-        alert(playRound(playerSelection, computerSelection));
+let playerSelection;
+
+while (true) 
+{
+    playerSelection = prompt("Rock, Paper, or Scissors: SHOOT!").toLowerCase();
+    
+    if (playerSelection === "rock" || playerSelection === "paper" || playerSelection === "scissors") 
+    {
+        break; // Exit the loop if input is valid
+    } 
+    else 
+    {
+        alert("Invalid input. Please enter 'rock', 'paper', or 'scissors'.");
+    }
+}
+
+// Now continue with the rest of your code using playerSelection as valid input
+    let computerSelection = getCompChoice();
+        console.log(playRound(playerSelection, computerSelection));
+        
+     
+      
     </script>
 </body>
 </html>
